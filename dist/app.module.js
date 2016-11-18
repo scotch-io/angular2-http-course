@@ -13,6 +13,8 @@ var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/toPromise');
 var AppModule = (function () {
     function AppModule() {
     }

@@ -4,6 +4,9 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
 @NgModule({
   imports: [ 
     BrowserModule,
