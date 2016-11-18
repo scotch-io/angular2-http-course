@@ -9,16 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var user_service_1 = require('./shared/services/user.service');
 var AppComponent = (function () {
-    function AppComponent(http) {
-        this.http = http;
+    function AppComponent(service) {
+        this.service = service;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // grab users
-        this.http.get('http://reqres.in/api/users')
-            .map(function (res) { return res.json().data; })
+        this.service.getUsers()
             .subscribe(function (users) { return _this.users = users; });
     };
     AppComponent = __decorate([
@@ -26,7 +24,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             template: "\n    <div class=\"jumbotron text-center\">\n      <h1>The App Lives!</h1>\n      <p>{{ message }}</p>\n    </div>\n\n    <div *ngIf=\"users\">\n      <div *ngFor=\"let user of users\">\n        <h2>{{ user.first_name }}</h2>\n      </div>\n    </div>\n  "
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [user_service_1.UserService])
     ], AppComponent);
     return AppComponent;
 }());
