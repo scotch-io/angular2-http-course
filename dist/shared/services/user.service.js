@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var Observable_1 = require('rxjs/Observable');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
@@ -20,7 +21,34 @@ var UserService = (function () {
      */
     UserService.prototype.getUsers = function () {
         return this.http.get(this.usersUrl)
-            .map(function (res) { return res.json().data; });
+            .map(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
+    /**
+     * Get a single user
+     */
+    UserService.prototype.getUser = function () {
+        return this.http.get('http://example.com')
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    // create a user
+    // update a user
+    // delete a user
+    /**
+     * Handle any errors from the API
+     */
+    UserService.prototype.handleError = function (err) {
+        var errMessage;
+        if (err instanceof http_1.Response) {
+            var body = err.json() || '';
+            var error = body.error || JSON.stringify(body);
+            errMessage = err.status + " - " + err.statusText + " || ''} " + error;
+        }
+        else {
+            errMessage = err.message ? err.message : err.toString();
+        }
+        return Observable_1.Observable.throw(errMessage);
     };
     UserService = __decorate([
         core_1.Injectable(), 

@@ -16,6 +16,7 @@ var app_component_1 = require('./app.component');
 var user_service_1 = require('./shared/services/user.service');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/toPromise');
+require('rxjs/add/operator/catch');
 var AppModule = (function () {
     function AppModule() {
     }
