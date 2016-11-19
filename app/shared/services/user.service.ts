@@ -15,6 +15,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get(this.usersUrl)
       .map(res => res.json().data)
+      .map(users => users.map(this.toUser))
       .catch(this.handleError);
   }
 
@@ -24,6 +25,7 @@ export class UserService {
   getUser(id: number): Observable<User> {
     return this.http.get(`${this.usersUrl}/${id}`)
       .map(res => res.json().data)
+      .map(this.toUser)
       .catch(this.handleError);
   }
 
@@ -32,6 +34,18 @@ export class UserService {
   // update a user
 
   // delete a user
+
+  /**
+   * Convert user info from the API to our standard/format
+   */
+  private toUser(user): User {
+    return {
+      id: user.id,
+      name: `${user.first_name} ${user.last_name}`,
+      username: user.first_name,
+      avatar: user.avatar
+    };
+  }
 
   /**
    * Handle any errors from the API
