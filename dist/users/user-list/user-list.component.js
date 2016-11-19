@@ -9,24 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var user_service_1 = require('./shared/services/user.service');
-var AppComponent = (function () {
-    function AppComponent(service) {
+var user_service_1 = require('../../shared/services/user.service');
+var UserListComponent = (function () {
+    function UserListComponent(service) {
         this.service = service;
     }
-    AppComponent.prototype.ngOnInit = function () {
+    UserListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.service.getUsers()
             .subscribe(function (users) { return _this.users = users; });
     };
-    AppComponent = __decorate([
+    UserListComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <div class=\"container\">\n\n      <div class=\"navbar navbar-default\">\n        <div class=\"container-fluid\">\n          <div class=\"navbar-header\">\n            <a routerLink=\"/\" class=\"navbar-brand\">My HTTP App</a>\n          </div>\n\n          <ul class=\"nav navbar-nav\"> \n            <li><a routerLink=\"/users\">Users</a></li>\n          </ul>\n        </div>\n      </div>\n\n      <router-outlet></router-outlet>\n    </div>\n  "
+            templateUrl: './app/users/user-list/user-list.component.html'
         }), 
         __metadata('design:paramtypes', [user_service_1.UserService])
-    ], AppComponent);
-    return AppComponent;
+    ], UserListComponent);
+    return UserListComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.UserListComponent = UserListComponent;
+//# sourceMappingURL=user-list.component.js.map
