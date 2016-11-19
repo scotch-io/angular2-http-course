@@ -6,9 +6,6 @@ import { UserService } from './shared/services/user.service';
 @Component({
   selector: 'my-app',
   template: `
-
-    <my-users></my-users>
-    
     <div class="jumbotron text-center">
       <h1>The App Lives!</h1>
       <p>{{ message }}</p>
@@ -19,6 +16,8 @@ import { UserService } from './shared/services/user.service';
         <h2>{{ user.first_name }}</h2>
       </div>
     </div>
+
+    <router-outlet></router-outlet>
   `
 })
 export class AppComponent implements OnInit {

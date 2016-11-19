@@ -22,7 +22,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n\n    <my-users></my-users>\n    \n    <div class=\"jumbotron text-center\">\n      <h1>The App Lives!</h1>\n      <p>{{ message }}</p>\n    </div>\n\n    <div *ngIf=\"users\">\n      <div *ngFor=\"let user of users\">\n        <h2>{{ user.first_name }}</h2>\n      </div>\n    </div>\n  "
+            template: "\n    <div class=\"jumbotron text-center\">\n      <h1>The App Lives!</h1>\n      <p>{{ message }}</p>\n    </div>\n\n    <div *ngIf=\"users\">\n      <div *ngFor=\"let user of users\">\n        <h2>{{ user.first_name }}</h2>\n      </div>\n    </div>\n\n    <router-outlet></router-outlet>\n  "
         }), 
         __metadata('design:paramtypes', [user_service_1.UserService])
     ], AppComponent);
