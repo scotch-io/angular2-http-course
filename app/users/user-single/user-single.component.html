@@ -1,5 +1,7 @@
 <div *ngIf="user">
 
+  <a [routerLink]="['/users', user.id, 'edit']" class="btn btn-primary btn-sm">Edit</a>
+
   <h2>{{ user.name }} <small>{{ user.username }}</small></h2>
   <img [src]="user.avatar" class="img-rounded">
 

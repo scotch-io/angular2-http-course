@@ -36,7 +36,14 @@ var UserService = (function () {
             .catch(this.handleError);
     };
     // create a user
-    // update a user
+    /**
+     * Update the user
+     */
+    UserService.prototype.updateUser = function (user) {
+        return this.http.put(this.usersUrl + "/" + user.id, user)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     // delete a user
     /**
      * Convert user info from the API to our standard/format

@@ -9,6 +9,7 @@ import { UserService } from './shared/services/user.service';
 import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserSingleComponent } from './users/user-single/user-single.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -25,7 +26,8 @@ import 'rxjs/add/operator/catch';
     AppComponent,
     UsersComponent,
     UserListComponent,
-    UserSingleComponent
+    UserSingleComponent,
+    UserEditComponent
   ],
   providers: [
     UserService
