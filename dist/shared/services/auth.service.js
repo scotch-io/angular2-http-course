@@ -29,13 +29,23 @@ var AuthService = (function () {
      * Log the user in
      */
     AuthService.prototype.login = function (username, password) {
+        var _this = this;
         return this.http.post(this.authUrl + "/login", { username: username, password: password })
             .map(function (res) { return res.json(); })
             .do(function (res) {
-            if (res.token)
+            if (res.token) {
                 localStorage.setItem('auth_token', res.token);
+                _this.loggedIn = true;
+            }
         })
             .catch(this.handleError);
+    };
+    /**
+     * Log the user out
+     */
+    AuthService.prototype.logout = function () {
+        localStorage.removeItem('auth_token');
+        this.loggedIn = false;
     };
     /**
      * Handle any errors from the API

@@ -26,9 +26,20 @@ export class AuthService {
     return this.http.post(`${this.authUrl}/login`, { username, password })
       .map(res => res.json())
       .do(res => {
-        if (res.token) localStorage.setItem('auth_token', res.token);
+        if (res.token) {
+          localStorage.setItem('auth_token', res.token);
+          this.loggedIn = true;
+        }
       })
       .catch(this.handleError);
+  }
+
+  /**
+   * Log the user out
+   */
+  logout() {
+    localStorage.removeItem('auth_token');
+    this.loggedIn = false;
   }
 
   /**

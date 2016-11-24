@@ -25,11 +25,13 @@ var LoginComponent = (function () {
      */
     LoginComponent.prototype.login = function () {
         var _this = this;
+        this.errorMessage = '';
         this.service.login(this.credentials.username, this.credentials.password)
             .subscribe(function (data) {
             _this.router.navigate(['']);
             console.log(data);
         }, function (err) {
+            _this.errorMessage = err;
             console.error(err);
         });
     };

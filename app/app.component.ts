@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { User } from './shared/models/user';
 import { UserService } from './shared/services/user.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'my-app',
@@ -17,6 +19,11 @@ import { UserService } from './shared/services/user.service';
           <ul class="nav navbar-nav"> 
             <li><a routerLink="/users">Users</a></li>
           </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+          </ul>
         </div>
       </div>
 
@@ -27,12 +34,31 @@ import { UserService } from './shared/services/user.service';
 export class AppComponent implements OnInit {
   users: User[];
 
-  constructor(private service: UserService) {}
+  constructor(
+    private userService: UserService, 
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {    
-    this.service.getUsers()
+    this.userService.getUsers()
       .subscribe(
         users => this.users = users
       );
+  }
+
+  /**
+   * Is the user logged in?
+   */
+  get isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  /**
+   * Log the user out
+   */
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
