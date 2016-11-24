@@ -5,11 +5,16 @@ var user_list_component_1 = require('./users/user-list/user-list.component');
 var user_single_component_1 = require('./users/user-single/user-single.component');
 var user_edit_component_1 = require('./users/user-edit/user-edit.component');
 var user_create_component_1 = require('./users/user-create/user-create.component');
+var login_component_1 = require('./login/login.component');
 exports.routes = [
     {
         path: '',
         redirectTo: '/users',
         pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: login_component_1.LoginComponent
     },
     {
         path: 'users',

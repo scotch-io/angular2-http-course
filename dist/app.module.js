@@ -20,6 +20,8 @@ var user_list_component_1 = require('./users/user-list/user-list.component');
 var user_single_component_1 = require('./users/user-single/user-single.component');
 var user_edit_component_1 = require('./users/user-edit/user-edit.component');
 var user_create_component_1 = require('./users/user-create/user-create.component');
+var login_component_1 = require('./login/login.component');
+var auth_service_1 = require('./shared/services/auth.service');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/catch');
@@ -42,10 +44,12 @@ var AppModule = (function () {
                 user_list_component_1.UserListComponent,
                 user_single_component_1.UserSingleComponent,
                 user_edit_component_1.UserEditComponent,
-                user_create_component_1.UserCreateComponent
+                user_create_component_1.UserCreateComponent,
+                login_component_1.LoginComponent
             ],
             providers: [
-                user_service_1.UserService
+                user_service_1.UserService,
+                auth_service_1.AuthService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

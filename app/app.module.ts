@@ -11,6 +11,8 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserSingleComponent } from './users/user-single/user-single.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './shared/services/auth.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -31,10 +33,12 @@ import 'rxjs/add/observable/throw';
     UserListComponent,
     UserSingleComponent,
     UserEditComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    LoginComponent
   ],
   providers: [
-    UserService
+    UserService,
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })
