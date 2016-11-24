@@ -64,7 +64,7 @@ var UserService = (function () {
         if (err instanceof http_1.Response) {
             var body = err.json() || '';
             var error = body.error || JSON.stringify(body);
-            errMessage = err.status + " - " + err.statusText + " || ''} " + error;
+            errMessage = err.status + " - " + (err.statusText || '') + " " + error;
         }
         else {
             errMessage = err.message ? err.message : err.toString();
