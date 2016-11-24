@@ -37,7 +37,12 @@ var UserService = (function () {
      * Get a single user
      */
     UserService.prototype.getUser = function (id) {
-        return this.http.get(this.usersUrl + "/" + id)
+        // attaching a token
+        var headers = new http_1.Headers();
+        var token = localStorage.getItem('auth_token');
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', "Bearer " + token);
+        return this.http.get(this.usersUrl + "/" + id, { headers: headers })
             .map(function (res) { return res.json().data; })
             .map(this.toUser)
             .catch(this.handleError);
