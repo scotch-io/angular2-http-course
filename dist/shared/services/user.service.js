@@ -51,7 +51,13 @@ var UserService = (function () {
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    // delete a user
+    /**
+     * Delete the user
+     */
+    UserService.prototype.deleteUser = function (id) {
+        return this.http.delete(this.usersUrl + "/" + id)
+            .catch(this.handleError);
+    };
     /**
      * Convert user info from the API to our standard/format
      */
