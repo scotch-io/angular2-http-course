@@ -23,6 +23,7 @@ var user_create_component_1 = require('./users/user-create/user-create.component
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/catch');
+require('rxjs/add/operator/do');
 require('rxjs/add/observable/throw');
 var AppModule = (function () {
     function AppModule() {

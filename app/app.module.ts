@@ -15,6 +15,7 @@ import { UserCreateComponent } from './users/user-create/user-create.component';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/throw';
 
 @NgModule({

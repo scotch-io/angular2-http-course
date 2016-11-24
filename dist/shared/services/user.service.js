@@ -11,10 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
+var Subject_1 = require('rxjs/Subject');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
         this.usersUrl = 'http://reqres.in/api/users';
+        // observable source
+        this.userCreatedSource = new Subject_1.Subject();
+        this.userDeletedSource = new Subject_1.Subject();
+        // observable stream
+        this.userCreated$ = this.userCreatedSource.asObservable();
+        this.userDeleted$ = this.userDeletedSource.asObservable();
     }
     /**
      * Get all users
@@ -39,8 +46,10 @@ var UserService = (function () {
      * Create the user
      */
     UserService.prototype.createUser = function (user) {
+        var _this = this;
         return this.http.post(this.usersUrl, user)
             .map(function (res) { return res.json(); })
+            .do(function (user) { return _this.userCreated(user); })
             .catch(this.handleError);
     };
     /**
@@ -55,8 +64,22 @@ var UserService = (function () {
      * Delete the user
      */
     UserService.prototype.deleteUser = function (id) {
+        var _this = this;
         return this.http.delete(this.usersUrl + "/" + id)
+            .do(function (res) { return _this.userDeleted(); })
             .catch(this.handleError);
+    };
+    /**
+     * The user was created. Add this info to our stream
+     */
+    UserService.prototype.userCreated = function (user) {
+        this.userCreatedSource.next(user);
+    };
+    /**
+     * The user was deleted. Add this info to our stream
+     */
+    UserService.prototype.userDeleted = function () {
+        this.userDeletedSource.next();
     };
     /**
      * Convert user info from the API to our standard/format
