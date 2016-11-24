@@ -35,7 +35,14 @@ var UserService = (function () {
             .map(this.toUser)
             .catch(this.handleError);
     };
-    // create a user
+    /**
+     * Create the user
+     */
+    UserService.prototype.createUser = function (user) {
+        return this.http.post(this.usersUrl, user)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     /**
      * Update the user
      */

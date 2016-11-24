@@ -29,7 +29,14 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  // create a user
+  /**
+   * Create the user
+   */
+  createUser(user: User): Observable<User> {
+    return this.http.post(this.usersUrl, user)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 
   /**
    * Update the user

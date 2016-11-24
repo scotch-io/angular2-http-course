@@ -10,6 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserSingleComponent } from './users/user-single/user-single.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -28,7 +29,8 @@ import 'rxjs/add/observable/throw';
     UsersComponent,
     UserListComponent,
     UserSingleComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserCreateComponent
   ],
   providers: [
     UserService
