@@ -6,7 +6,7 @@ import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
-  private usersUrl: string = 'http://reqres.in/api/users';
+  private usersUrl: string = 'https://reqres.in/api/users';
 
   // observable source
   private userCreatedSource = new Subject<User>();
